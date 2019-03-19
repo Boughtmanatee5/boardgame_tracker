@@ -43,7 +43,7 @@ class Search extends PureComponent {
 
     render() {
         const { result, inputValue } = this.state
-
+        const { navigation } = this.props
         return (
             <View style={styles.container}>
                 <SearchHeader
@@ -54,7 +54,7 @@ class Search extends PureComponent {
                 <FlatList
                     data={result}
                     renderItem={({item}) => (
-                        <ListItem key={item.id}>
+                        <ListItem onPress={() => navigation.navigate('GameDetail')} key={item.id}>
                             <Text>{item.name}</Text>
                         </ListItem>
                     )}

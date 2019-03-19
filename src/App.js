@@ -1,32 +1,13 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
-
-import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+// @flow
+import {createStackNavigator, createAppContainer} from 'react-navigation';
 import Search from './views/search'
+import GameDetail from './views/GameDetails'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }
+const MainNavigator = createStackNavigator({
+  Home: {screen: Search},
+  GameDetail: {screen: GameDetail } 
 });
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Search/>
-      </View>
-    );
-  }
-}
+const App = createAppContainer(MainNavigator);
+
+export default App;

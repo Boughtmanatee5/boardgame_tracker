@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
+
 
 const styles = StyleSheet.create({
     listItem: {
@@ -10,10 +11,16 @@ const styles = StyleSheet.create({
     }
 })
 
-const ListItem = ({ children, style, ...props }) => (
-    <View style={[styles.listItem, style]} {...props}>
-        {children}
-    </View>
-)
+const ListItem = ({ children, style, onPress, ...props }) => onPress ? (
+        <TouchableOpacity onPress={onPress}>
+            <View style={[styles.listItem, style]} {...props}>
+                {children}
+            </View>
+        </TouchableOpacity>
+    ) : (    
+        <View style={[styles.listItem, style]} {...props}>
+            {children}
+        </View>
+    );
 
 export default ListItem
