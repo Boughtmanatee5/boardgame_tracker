@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
     }
 })
 
-const Header = ({ children }) => (
-    <View style={styles.header}>
+const Header = ({ children, style, ...props }) => (
+    <View style={[styles.header, style]} {...props}>
         {children}
     </View>
 )

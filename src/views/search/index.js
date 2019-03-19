@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, TextInput, Button, Text, FlatList } from 'react-native'
-import Header from '../../components/Header'
+import { StyleSheet, View, Text, FlatList } from 'react-native'
+import SearchHeader from '../../partials/SearchHeader'
+import ListItem from '../../components/ListItem'
 import BoardGameGeekService from '../../services/BoardGameGeekService'
 
 const styles = StyleSheet.create({
@@ -45,18 +46,17 @@ class Search extends PureComponent {
 
         return (
             <View style={styles.container}>
-                <Header>
-                    <TextInput
-                        onChangeText={this.onChange}
-                        placeholder="Search"
-                        value={inputValue}
-                    />
-                    <Button onPress={this.onPress} title="search"/>
-                </Header>
+                <SearchHeader
+                    onChange={this.onChange}
+                    onSubmit={this.onPress}
+                    value={inputValue} 
+                />
                 <FlatList
                     data={result}
                     renderItem={({item}) => (
-                        <Text>{item.name}</Text>
+                        <ListItem key={item.id}>
+                            <Text>{item.name}</Text>
+                        </ListItem>
                     )}
                 />
             </View>
